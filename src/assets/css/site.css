@@ -1,0 +1,366 @@
+/* ============================================================
+   site.css — gedeeld voor alle pagina's, laadt NA de paginastijl.
+   Bevat: veilige cursor, één menu voor alle pagina's,
+   het hover-effect bij "Geselecteerd werk" en kleine extra's.
+   ============================================================ */
+
+/* ---------- Cursor: de gewone pijl verdwijnt pas als de eigen cursor echt draait ---------- */
+html:not(.cursor-on), html:not(.cursor-on) body { cursor: auto !important; }
+html:not(.cursor-on) .cursor, html:not(.cursor-on) .cursor-ring { display: none !important; }
+
+/* ---------- Tekens in een ander lettertype (blijft werken, ook nu alles Outfit is) ---------- */
+.fb { font-family: 'Outfit', sans-serif; }
+
+/* ---------- Zonder JavaScript blijft alles zichtbaar ---------- */
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* ---------- Eén menu, overal hetzelfde ---------- */
+body > nav { z-index: 200; }
+.page-bedankt > nav { position: relative; }
+html.menu-open body > nav { position: fixed; top: 0; left: 0; right: 0; background: transparent; }
+body .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; margin: -4px; background: none; border: none; z-index: 210; position: relative; }
+body .hamburger span { display: block; width: 24px; height: 2px; background: var(--mint, #bfdcba); border-radius: 2px; transition: transform .3s ease, opacity .3s ease; }
+body .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body .hamburger.open span:nth-child(2) { opacity: 0; }
+body .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Het menu-scherm: marmer, omlijnde woorden, draaiende badge */
+body .nav-mobile {
+  display: flex; position: fixed; inset: 0; z-index: 150; overflow: hidden auto;
+  flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 24px;
+  padding: 118px 28px 32px; background: #1e0303; color: var(--cream, #e8e5d8);
+  visibility: hidden; pointer-events: none;
+  clip-path: circle(0px at calc(100% - 40px) 44px);
+  transition: clip-path .4s cubic-bezier(.7,0,.2,1), visibility 0s linear .4s;
+}
+body .nav-mobile.open {
+  visibility: visible; pointer-events: auto;
+  clip-path: circle(150% at calc(100% - 40px) 44px);
+  transition: clip-path .45s cubic-bezier(.7,0,.2,1), visibility 0s;
+}
+.nm-bg { position: absolute; inset: 0; background: url('/assets/images/marmer-bg.jpg') center 30% / cover; opacity: .55; transform: scale(1.15); transition: transform .9s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
+.nm-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,3,3,.55) 0%, rgba(30,3,3,.82) 55%, rgba(30,3,3,.95) 100%); }
+.nav-mobile.open .nm-bg { transform: scale(1); }
+.nm-circle { position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 1px solid rgba(191,220,186,.2); right: -60px; top: 34%; pointer-events: none; }
+.nm-star { position: absolute; color: var(--mint, #bfdcba); pointer-events: none; opacity: 0; transform: scale(.3) rotate(-40deg); transition: opacity .4s, transform .7s cubic-bezier(.2,.7,.2,1); }
+.nm-star.s1 { bottom: 210px; left: 30px; font-size: 1.3rem; transition-delay: .2s; }
+.nm-star.s2 { bottom: 236px; left: 60px; font-size: .6rem; transition-delay: .25s; }
+.nm-star.s3 { bottom: 150px; left: 38%; font-size: .8rem; transition-delay: .3s; }
+.nav-mobile.open .nm-star { opacity: .8; transform: none; }
+
+.nm-top, .nm-links, .nm-foot { position: relative; z-index: 1; }
+.nm-eyebrow { display: flex; align-items: center; gap: 14px; font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(232,229,216,.55); }
+.nm-eyebrow::before { content: ''; width: 36px; height: 1px; background: currentColor; }
+
+.nm-links { display: flex; flex-direction: column; border-top: 1px solid rgba(191,220,186,.16); }
+body .nav-mobile .nm-link {
+  display: grid; grid-template-columns: 2rem minmax(0,1fr) auto; align-items: center; gap: 10px;
+  padding: 14px 2px; border-bottom: 1px solid rgba(191,220,186,.16); text-decoration: none; color: var(--mint, #bfdcba);
+  opacity: 0; transform: translateY(26px); transition: opacity .3s ease, transform .45s cubic-bezier(.2,.7,.2,1);
+  -webkit-tap-highlight-color: transparent;
+  /* oude menustijl van de pagina's uitzetten */
+  background: none; border: 0; border-bottom: 1px solid rgba(191,220,186,.16); border-radius: 0;
+  text-align: left; font-family: 'Outfit', sans-serif; letter-spacing: normal; width: 100%; max-width: none; margin: 0; box-shadow: none;
+}
+body .nav-mobile .nm-link:hover, body .nav-mobile .nm-link.active { background: none; border-color: rgba(191,220,186,.16); opacity: 1; }
+body .nav-mobile .nm-link::after, body .nav-mobile .nm-cta::after { content: none; }
+.nav-mobile.open .nm-link { opacity: 1; transform: none; }
+.nav-mobile.open .nm-link:nth-child(1) { transition-delay: .1s; }
+.nav-mobile.open .nm-link:nth-child(2) { transition-delay: .14s; }
+.nav-mobile.open .nm-link:nth-child(3) { transition-delay: .18s; }
+.nav-mobile.open .nm-link:nth-child(4) { transition-delay: .22s; }
+.nm-nr { font-family: 'Outfit', sans-serif; align-self: start; padding-top: 10px; font-size: .6rem; letter-spacing: .12em; color: rgba(191,220,186,.5); font-variant-numeric: tabular-nums; }
+.nm-word {
+  font-family: 'Outfit', sans-serif; font-weight:800; text-transform: uppercase;
+  font-size: clamp(30px, 10.2vw, 64px); min-width: 0; line-height: .92; letter-spacing: .02em;
+  color: transparent; -webkit-text-stroke: 2px var(--mint, #bfdcba);
+  transition: color .3s ease, transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.nm-sub { font-family: 'Outfit', sans-serif; font-size: 1.15rem; line-height: 1; color: rgba(191,220,186,.6); transition: color .3s, transform .45s cubic-bezier(.2,.7,.2,1); }
+.nm-link:hover .nm-sub, .nm-link:active .nm-sub { transform: translateX(4px); }
+.nm-link:hover .nm-word, .nm-link:active .nm-word, .nm-link:focus-visible .nm-word { color: var(--mint, #bfdcba); transform: translateX(8px); }
+.nm-link:hover .nm-sub, .nm-link:active .nm-sub { color: var(--mint, #bfdcba); }
+.nm-link.active .nm-word { color: var(--mint, #bfdcba); -webkit-text-stroke: 0 transparent; }
+.nm-link.active .nm-word::after { content: '\2726'; font-size: .3em; vertical-align: super; margin-left: .25em; color: var(--cream, #e8e5d8); }
+.nm-link.active .nm-sub { color: var(--cream, #e8e5d8); }
+
+.nm-foot { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; opacity: 0; transform: translateY(16px); margin-top: auto; transition: opacity .3s ease .25s, transform .45s cubic-bezier(.2,.7,.2,1) .25s; }
+.nav-mobile.open .nm-foot { opacity: 1; transform: none; }
+.nm-foot-text { display: flex; flex-direction: column; gap: 14px; }
+body .nav-mobile .nm-cta { align-self: flex-start; display: inline-block; border: 1.5px solid var(--cream, #e8e5d8); color: var(--cream, #e8e5d8); font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; padding: 13px 22px; white-space: nowrap; text-decoration: none; transition: background .25s, color .25s; background: none; border-radius: 0; font-family: 'Outfit', sans-serif; text-align: left; opacity: 1; width: auto; max-width: none; margin: 0; }
+body .nav-mobile .nm-cta:hover, body .nav-mobile .nm-cta:active { background: var(--cream, #e8e5d8); color: var(--dark-red, #5a0a0a); }
+.nm-meta { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(232,229,216,.4); }
+.nm-badge { position: absolute; right: -4px; bottom: calc(100% + 18px); width: 96px; height: 96px; flex: none; color: var(--mint, #bfdcba); animation: nm-spin 16s linear infinite; }
+.nm-badge text { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 10.4px; letter-spacing: 1.6px; fill: currentColor; }
+.nm-badge .nm-badge-star { font-family: 'Outfit', sans-serif; font-size: 22px; letter-spacing: 0; }
+@keyframes nm-spin { to { transform: rotate(360deg); } }
+@media (max-height: 640px) { .nm-word { font-size: clamp(36px, 11vw, 56px); } .nm-badge { width: 76px; height: 76px; bottom: calc(100% + 10px); } body .nav-mobile { padding-top: 100px; gap: 20px; } }
+@media (prefers-reduced-motion: reduce) {
+  body .nav-mobile, body .nav-mobile.open { transition: visibility 0s; }
+  .nm-link, .nm-foot, .nm-star, .nm-bg { transition: none !important; }
+  .nm-badge { animation: none; }
+}
+@media (max-width: 768px) {
+  body .hamburger { display: flex; }
+  body .nav-links { display: none; }
+}
+@media (min-width: 769px) { body .nav-mobile { display: none !important; } }
+
+/* ---------- Toetsenbord: zichtbare focus ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid currentColor; outline-offset: 3px;
+}
+
+/* ---------- Geselecteerd werk: de lijst met zwevende afbeelding ---------- */
+.hover-list, .hover-float { display: none; }
+.mini-portfolio-more { display: flex; justify-content: center; margin-top: 40px; }
+
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  .mini-portfolio .mini-portfolio-grid { display: none; }
+  .hover-list { display: block; list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(90,10,10,.16); }
+  .hover-float { display: block; }
+}
+
+.hover-row {
+  display: grid; grid-template-columns: 3.5rem minmax(0,1fr) auto; align-items: center; gap: 24px;
+  padding: clamp(16px, 2vw, 26px) 4px; border-bottom: 1px solid rgba(90,10,10,.16);
+  text-decoration: none; color: var(--dark-red); position: relative;
+}
+.hover-nr { font-size: .62rem; letter-spacing: .2em; color: rgba(68,21,14,.45); font-variant-numeric: tabular-nums; transition: color .35s; }
+.hover-name {
+  font-family: 'Outfit', sans-serif; font-weight:800; text-transform: uppercase;
+  font-size: clamp(34px, 5.2vw, 82px); line-height: .95; letter-spacing: .02em;
+  color: var(--dark-red); -webkit-text-stroke: 0 transparent;
+  transition: color .35s ease, opacity .35s ease, transform .55s cubic-bezier(.2,.7,.2,1), -webkit-text-stroke-color .35s;
+}
+.hover-name .fb { font-weight: inherit; }
+.hover-tag { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(68,21,14,.5); text-align: right; transition: color .35s; }
+.hover-row::after {
+  content: '\2726'; position: absolute; right: 4px; top: 50%; color: var(--mint);
+  font-size: 1.1rem; transform: translate(10px,-50%) scale(.4) rotate(-30deg); opacity: 0;
+  transition: opacity .3s, transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.hover-list.active .hover-name { color: transparent; -webkit-text-stroke: 1.5px rgba(90,10,10,.38); }
+.hover-list.active .hover-row.on .hover-name { color: var(--dark-red); -webkit-text-stroke: 0 transparent; transform: translateX(22px); }
+.hover-list.active .hover-row.on .hover-nr, .hover-list.active .hover-row.on .hover-tag { color: var(--dark-red); }
+.hover-list.active .hover-row.on .hover-tag { transform: translateX(-34px); }
+.hover-tag { transition: color .35s, transform .45s cubic-bezier(.2,.7,.2,1); }
+.hover-list.active .hover-row.on::after { opacity: 1; transform: translate(0,-50%) scale(1) rotate(0); }
+
+.hover-float {
+  position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none;
+  width: clamp(260px, 25vw, 400px); aspect-ratio: 4 / 3; max-width: 100%;
+  transform: translate3d(-999px,-999px,0); will-change: transform;
+}
+.hover-frame {
+  position: absolute; inset: 0; overflow: hidden; border-radius: 6px; background: var(--dark-red);
+  clip-path: inset(50% 0 50% 0 round 6px); transition: clip-path .55s cubic-bezier(.7,0,.2,1);
+  box-shadow: 0 30px 60px -28px rgba(42,5,5,.55);
+}
+.hover-float.show .hover-frame { clip-path: inset(0 0 0 0 round 6px); }
+.hover-frame img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.16); transition: opacity .35s ease, transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.hover-frame img.cur { opacity: 1; transform: scale(1); }
+
+/* Op gsm en tablet: de kaartjes tonen meteen naam en soort werk */
+@media (hover: none), (pointer: coarse) {
+  .mini-card::before { opacity: 1 !important; }
+  .mini-card-info { opacity: 1 !important; transform: none !important; }
+  .project-card::before { opacity: 1; }
+  .project-card .project-info { opacity: 1; transform: none; }
+}
+
+/* ---------- Work: project oplichten als je vanaf de homepage komt ---------- */
+.project-card { scroll-margin: 120px; transition: transform .35s ease, box-shadow .35s ease; }
+.project-card.is-target { box-shadow: 0 0 0 3px var(--mint), 0 16px 40px rgba(68,21,14,.18); }
+
+/* ---------- Contactformulier ---------- */
+.hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+.form-status { font-size: .85rem; color: #8a1c1c; min-height: 0; margin: 0 0 12px; }
+.form-status:empty { display: none; }
+
+/* ---------- Toegankelijkheid ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-inner { animation-duration: 120s !important; }
+  .reveal, .hover-name, .hover-frame, .hover-frame img { transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Op smalle schermen overlapt de verticale tekst in de hero de titel: verbergen */
+@media (max-width: 768px) { .hero-side { display: none; } }
+
+/* ---------- About: fun facts die optellen ---------- */
+.fact-number .tel { font-variant-numeric: tabular-nums; display: inline-block; }
+
+/* ---------- About: portretfoto's in de boog, logo in de cirkel ---------- */
+.photo-main:has(.pf-stack) { background: #d9d6cc; box-shadow: 0 0 0 1.5px var(--dark-red, #5a0a0a), 12px 12px 0 var(--dark-red, #5a0a0a); }
+.pf-stack { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+.pf-stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; visibility: hidden; }
+.pf-stack img.cur { visibility: visible; }
+.photo-circle:has(.pf-logo) { background: var(--dark-red, #5a0a0a); box-shadow: 0 0 0 1.5px var(--dark-red, #5a0a0a), 6px 6px 0 1.5px var(--mint, #bfdcba); }
+.pf-logo { width: 62%; height: auto; position: relative; z-index: 1; }
+
+/* ---------- Gsm: projectkaartjes op de homepage alleen met de naam ---------- */
+@media (max-width: 520px) {
+  .mini-portfolio-grid .mini-card-tag { display: none; }
+  .mini-portfolio-grid .mini-card-name { font-size: 1rem; }
+  .mini-portfolio-grid .mini-card-info { padding: 14px 14px; }
+}
+
+/* ---------- Footer: e-mail, Instagram en privacy ---------- */
+footer { flex-wrap: wrap; row-gap: 18px; }
+.footer-sub {
+  flex-basis: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap;
+  padding-top: 18px; border-top: 1px solid rgba(90,10,10,.1);
+  font-family: 'Outfit', sans-serif; font-size: .75rem; letter-spacing: .04em;
+}
+.footer-contact { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.footer-sub a { color: var(--dark-red, #5a0a0a); text-decoration: none; transition: opacity .2s; }
+.footer-sub a:hover { opacity: .65; }
+.footer-mail { font-weight: 600; }
+.footer-dot { color: var(--mint, #bfdcba); font-size: .7rem; }
+.footer-privacy { color: #888 !important; }
+@media (max-width: 768px) {
+  .footer-sub { justify-content: center; text-align: center; flex-direction: column; }
+  .footer-contact { justify-content: center; }
+}
+
+/* ---------- Contactpagina: rechtstreeks contact en privacy ---------- */
+.contact-direct { font-family: 'Outfit', sans-serif; font-size: .9rem; color: rgba(90,10,10,.75); margin: -8px 0 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; position: relative; z-index: 2; }
+.contact-direct a { color: var(--dark-red, #5a0a0a); font-weight: 600; text-decoration: underline; text-decoration-color: var(--mint, #bfdcba); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.form-privacy { font-family: 'Outfit', sans-serif; font-size: .78rem; line-height: 1.6; color: rgba(90,10,10,.6); margin: 0 0 18px; max-width: 52ch; }
+.form-privacy a { color: var(--dark-red, #5a0a0a); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Privacyverklaring ---------- */
+.legal { max-width: 760px; }
+.legal-lead { font-family: 'Outfit', sans-serif; font-size: 1.05rem; line-height: 1.7; color: rgba(90,10,10,.85); max-width: 60ch; margin-bottom: 10px; }
+.legal-date { font-family: 'Outfit', sans-serif; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(90,10,10,.45); margin-bottom: 48px; }
+.legal-list { list-style: none; counter-reset: stap; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.legal-list > li { counter-increment: stap; display: grid; grid-template-columns: 3.2rem minmax(0,1fr); column-gap: 18px; padding: 30px 0; border-top: 1px solid rgba(90,10,10,.12); }
+.legal-list > li::before { content: counter(stap, decimal-leading-zero); grid-row: 1 / span 9; font-family: 'Outfit', sans-serif; font-size: .7rem; letter-spacing: .14em; color: rgba(90,10,10,.45); padding-top: .45em; font-variant-numeric: tabular-nums; }
+.legal-list h2 { font-family: 'Outfit', sans-serif; font-weight:800; font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--dark-red, #5a0a0a); margin: 0 0 12px; letter-spacing: .02em; }
+.legal-list p, .legal-list ul { font-family: 'Outfit', sans-serif; font-size: .95rem; line-height: 1.75; color: rgba(42,5,5,.82); max-width: 62ch; margin: 0 0 12px; }
+.legal-list ul { padding-left: 1.1em; }
+.legal-list ul li { margin-bottom: 6px; }
+.legal-list ul li::marker { content: '\2726  '; color: var(--mint, #bfdcba); }
+.legal-list a { color: var(--dark-red, #5a0a0a); font-weight: 600; text-decoration: underline; text-decoration-color: var(--mint, #bfdcba); text-decoration-thickness: 2px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .legal-list > li { grid-template-columns: 1fr; }
+  .legal-list > li::before { grid-row: auto; padding: 0 0 6px; }
+}
+
+.footer-legal { display: flex; align-items: center; gap: 12px; color: #888; font-variant-numeric: tabular-nums; }
+@media (max-width: 768px) { .footer-legal { justify-content: center; } }
+
+/* ---------- Homepage: diensten in vier vakjes, direct onder de hero ---------- */
+.services { background: var(--off-white, #f5f3ee); padding: 96px 60px 40px; position: relative; }
+.services-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(26px, 3.4vw, 50px); line-height: 1; color: var(--dark-red, #5a0a0a); letter-spacing: .04em; text-wrap: balance; }
+.services-title .outline-word { color: transparent; -webkit-text-stroke: 2px var(--dark-red, #5a0a0a); }
+.services .mini-title-line { width: 60px; height: 3px; background: var(--mint, #bfdcba); border-radius: 2px; margin: 20px 0 42px; }
+.services-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(90,10,10,.16); }
+.service { border-right: 1px solid rgba(90,10,10,.12); min-width: 0; }
+.service:last-child { border-right: 0; }
+.service-link {
+  position: relative; display: flex; flex-direction: column; gap: 12px; height: 100%;
+  padding: 32px 26px 32px; text-decoration: none; color: var(--dark-red, #5a0a0a);
+  transition: background .35s ease, color .35s ease, opacity .35s ease;
+}
+.service-thumb { display: none; }
+.service-icon {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--mint, #bfdcba); color: var(--dark-red, #5a0a0a); font-size: .95rem; margin-bottom: 10px;
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.service-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.35rem; line-height: 1.15; letter-spacing: .01em; }
+.service-text { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: .92rem; line-height: 1.6; min-height: 3.2em; color: rgba(68,21,14,.75); transition: color .35s; }
+.service-items { list-style: none; margin: 4px 0 0; padding: 14px 0 4px; border-top: 1px solid rgba(90,10,10,.12); display: flex; flex-direction: column; gap: 7px; margin-bottom: auto; transition: border-color .35s; }
+.service-items li { display: flex; gap: 10px; align-items: baseline; font-family: 'Outfit', sans-serif; font-size: .86rem; font-weight: 500; line-height: 1.35; color: var(--dark-red, #5a0a0a); transition: color .35s; }
+.service-items li::before { content: '\2726'; font-size: .55rem; color: rgba(90,10,10,.4); transform: translateY(-1px); transition: color .35s; }
+/* Twee knoppen: Bekijk (omlijnd) en Bestel (gevuld) */
+.service-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.service-btn {
+  flex: 1 1 0; min-width: 0; display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+  padding: 12px 14px; border: 1.5px solid var(--dark-red, #5a0a0a); border-radius: 0;
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+  text-decoration: none; color: var(--dark-red, #5a0a0a); background: transparent;
+  transition: background .25s, color .25s, border-color .25s, gap .25s;
+}
+.service-btn-fill { background: var(--dark-red, #5a0a0a); color: var(--cream, #e8e5d8); }
+.service-btn:hover, .service-btn:focus-visible { gap: 12px; }
+.service-btn:not(.service-btn-fill):hover { background: rgba(90,10,10,.08); }
+.service-btn-fill:hover { background: #3d0606; }
+.service-link.on .service-btn, .service-link:focus-within .service-btn { border-color: var(--cream, #e8e5d8); color: var(--cream, #e8e5d8); }
+.service-link.on .service-btn-fill, .service-link:focus-within .service-btn-fill { background: var(--mint, #bfdcba); border-color: var(--mint, #bfdcba); color: var(--dark-red, #5a0a0a); }
+.service-link.on .service-btn:not(.service-btn-fill):hover { background: rgba(232,229,216,.1); }
+.service-btn:focus-visible { outline: 2px solid var(--mint, #bfdcba); outline-offset: 3px; }
+.service-more { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; transition: gap .3s; }
+/* Hover: het vakje kleurt donkerrood, de andere vervagen, en er zweeft een foto mee */
+.services-grid.active .service-link:not(.on) { opacity: .45; }
+.service-link.on, .service-link:focus-visible { background: var(--green, #44150e); color: var(--mint, #bfdcba); }
+.service-link.on .service-text, .service-link:focus-visible .service-text { color: rgba(232,229,216,.82); }
+.service-link.on .service-items, .service-link:focus-visible .service-items { border-color: rgba(191,220,186,.2); }
+.service-link.on .service-items li, .service-link:focus-visible .service-items li { color: var(--cream, #e8e5d8); }
+.service-link.on .service-items li::before, .service-link:focus-visible .service-items li::before { color: var(--mint, #bfdcba); }
+.service-link.on .service-icon { transform: rotate(90deg) scale(1.08); }
+.service-link.on .service-more { gap: 14px; }
+.service-float { width: clamp(180px, 15vw, 240px); }
+.page-home #manifest { padding-top: 70px; }
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service:nth-child(2) { border-right: 0; }
+  .service:nth-child(-n+2) { border-bottom: 1px solid rgba(90,10,10,.12); }
+}
+/* Gsm en tablet: geen hover en geen foto's */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .service-float { display: none !important; }
+}
+@media (max-width: 768px) {
+  .services { padding: 64px 24px 24px; }
+  .page-home #manifest { padding-top: 48px; }
+}
+@media (max-width: 560px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service { border-right: 0; border-bottom: 1px solid rgba(90,10,10,.12); }
+  .service-link { padding: 26px 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .service-link, .service-icon { transition: none; } }
+
+.service-link { cursor: pointer; }
+.service-link:focus-visible { outline: 2px solid var(--mint, #bfdcba); outline-offset: -2px; }
+
+/* ---------- Homepage: meer contrast tussen de secties ----------
+   Diensten op crème, manifest effen donkerrood, werk op lichte achtergrond */
+.page-home .services { background: var(--off-white, #f5f3ee); padding-bottom: 96px; }
+.page-home .services .service { border-color: rgba(90,10,10,.14); }
+.page-home #manifest {
+  position: relative; padding-top: 110px; padding-bottom: 110px;
+  background: #44150e;   /* zelfde rood als de fun facts op de About-pagina */
+  overflow: hidden;
+}
+.page-home #manifest::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(191,220,186,.06) 0%, transparent 60%); pointer-events: none; }
+.page-home #manifest .manifest-title { color: var(--mint, #bfdcba); }
+.page-home #manifest .outline-word { -webkit-text-stroke: 2px var(--mint, #bfdcba); }
+.page-home #manifest .manifest-circle { border-color: rgba(191,220,186,.25); }
+.page-home #manifest .approach-card:nth-child(2) { background: var(--cream, #e8e5d8); }
+.page-home #manifest .approach-card:nth-child(2) .card-title { color: #44150e; }
+.page-home #manifest .approach-grid, .page-home #manifest .manifest-title, .page-home #manifest .manifest-line { position: relative; z-index: 1; }
+.page-home #manifest .approach-card:nth-child(2) .card-body { color: rgba(68,21,14,.72); }
+.page-home #manifest .approach-card:nth-child(2) .card-num { color: rgba(68,21,14,.45); }
+.page-home #manifest .approach-card:nth-child(2)::before { color: rgba(68,21,14,.07); }
+.page-home #manifest .approach-card:nth-child(2):hover .sparkle { color: rgba(68,21,14,.55); }
+.page-home .mini-portfolio { padding-top: 96px; }
+@media (max-width: 768px) {
+  .page-home .services { padding-bottom: 64px; }
+  .page-home #manifest { padding-top: 64px; padding-bottom: 64px; }
+  .page-home .mini-portfolio { padding-top: 64px; }
+}
+
+/* Homepage: sectietitels iets kleiner */
+.page-home .services-title, .page-home .manifest-title, .page-home .mini-title { font-size: clamp(22px, 2.5vw, 36px); }
+.page-home .services-title .outline-word, .page-home .manifest-title .outline-word, .page-home .mini-title .outline-word { -webkit-text-stroke-width: 1.5px; }
+/* Homepage: projectnamen bij "Mijn werk" kleiner */
+.page-home #hover-list .hover-name { font-size: clamp(26px, 3.4vw, 52px); }
+.page-home #hover-list .hover-row { padding: clamp(14px, 1.6vw, 20px) 4px; }

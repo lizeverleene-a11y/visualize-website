@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl-BE" class="no-js">
+<head>
+{{head}}
+<title>Contact — VISUALIZE by LV</title>
+<meta name="description" content="Heb je een project in gedachten? Stuur een berichtje naar VISUALIZE by LV.">
+<meta property="og:title" content="Contact — VISUALIZE by LV">
+<meta property="og:description" content="Heb je een project in gedachten? Stuur een berichtje naar VISUALIZE by LV.">
+<link rel="stylesheet" href="/assets/css/contact.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="page-contact">
+{{header}}
+<main>
+<div class="page-wrap">
+  <!-- Decorative background -->
+  <div class="deco-bg-text" aria-hidden="true">LV</div>
+  <div class="deco-circle deco-circle-1"></div>
+  <div class="deco-circle deco-circle-2"></div>
+  <div class="deco-circle deco-circle-3"></div>
+  <!-- Stars -->
+  <span class="deco-star lg" style="top:18%;right:8%;">&#x2726;</span>
+  <span class="deco-star sm" style="top:24%;right:14%;">&#x2726;</span>
+  <span class="deco-star" style="top:12%;right:18%;">&#x2726;</span>
+  <span class="deco-star sm" style="bottom:30%;left:5%;">&#x2726;</span>
+  <span class="deco-star lg" style="bottom:22%;left:10%;">&#x2726;</span>
+  <!-- Lines -->
+  <div class="deco-line deco-line-h" style="top:38%;right:0;"></div>
+  <div class="deco-line deco-line-v" style="bottom:15%;left:22%;"></div>
+
+  <h1 class="contact-title">Laten we<br><span>samenwerken.</span></h1>
+  <div class="contact-accent-line"></div>
+  <p class="contact-intro">Heb je een project in gedachten, of gewoon iets simpels? Stuur me een berichtje en ik neem zo snel mogelijk contact op.</p>
+  <p class="contact-direct">Liever zelf mailen? <a href="mailto:info@visualize.be">info@visualize.be</a> <span class="footer-dot" aria-hidden="true">&#x2726;</span> <a href="https://www.instagram.com/visualize.be/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">&#x2197;</span></a></p>
+
+  <div class="form-wrapper">
+  <form class="contact-form" id="contact-form" data-bedankt="/bedankt/" action="https://formspree.io/f/mnjwnzkl" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Naam</label>
+        <input type="text" id="name" name="name" placeholder="Jouw naam" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="jouw@email.com" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subject">Type project</label>
+      <select id="subject" name="subject">
+        <option value="" disabled selected>Kies een categorie</option>
+        <option value="website">Website design</option>
+        <option value="huisstijl">Huisstijl / branding</option>
+        <option value="visitekaartjes">Visitekaartjes</option>
+        <option value="drukwerk">Stickers &amp; drukwerk</option>
+        <option value="overig">Overig</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Bericht</label>
+      <textarea id="message" name="message" placeholder="Vertel me over je project..." required></textarea>
+    </div>
+    <div class="form-divider"></div>
+    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="form-status" id="form-status" role="status"></p>
+    <p class="form-privacy">Ik gebruik je gegevens alleen om je te antwoorden. Meer daarover lees je in de <a href="/privacy/">privacyverklaring</a>.</p>
+    <button type="submit" class="form-submit" id="submit-btn">Verstuur &nbsp;&#x2192;</button>
+  </form>
+  </div>
+</div>
+</main>
+{{footer}}
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/contact.js"></script>
+</body>
+</html>

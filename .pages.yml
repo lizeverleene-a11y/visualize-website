@@ -1,0 +1,119 @@
+# Instellingen voor de beheerpagina (Pages CMS): app.pagescms.org
+# Hier staat wat je zelf kunt aanpassen zonder code.
+
+media:
+  input: src/assets/uploads
+  output: /assets/uploads
+  categories: [image]
+  rename: safe
+
+content:
+  - name: projecten
+    label: Projecten
+    type: file
+    path: content/projecten.json
+    format: json
+    fields:
+      - name: projecten
+        label: Projecten
+        description: Sleep projecten om de volgorde te veranderen. De volgorde hier is ook de volgorde op de website.
+        type: object
+        list: true
+        fields:
+          - name: naam
+            label: Naam van het project
+            description: Zo staat het project op de Work-pagina. Bijvoorbeeld "Viventra Groepspraktijk Sint-Kruis".
+            type: string
+            required: true
+          - name: korte_naam
+            label: Korte naam (homepage)
+            description: Optioneel. Een kortere naam voor de lijst op de homepage, bijvoorbeeld "Viventra". Laat leeg om de gewone naam te gebruiken.
+            type: string
+          - name: soort
+            label: Soort werk
+            description: Het kleine labeltje boven of naast de naam, bijvoorbeeld "Huisstijl & branding · Website design".
+            type: string
+          - name: fotos
+            label: Foto's
+            description: De eerste foto is de hoofdfoto. Bij meerdere foto's kunnen bezoekers erdoor bladeren.
+            type: image
+            list: true
+            options:
+              path: src/assets/uploads/projecten
+          - name: op_home
+            label: Toon op de homepage
+            description: Zet aan om dit project in "Geselecteerd werk" op de homepage te tonen (met het zwevende-foto-effect).
+            type: boolean
+          - name: focus
+            label: Uitsnede van de hoofdfoto
+            description: Welk deel van de hoofdfoto belangrijk is als hij wordt bijgesneden.
+            type: select
+            options:
+              values:
+                - value: center
+                  label: Midden
+                - value: 30% center
+                  label: Iets naar links
+                - value: 70% center
+                  label: Iets naar rechts
+                - value: center 25%
+                  label: Iets naar boven
+                - value: center 75%
+                  label: Iets naar onder
+          - name: huisstijl
+            label: "Filter: Huisstijl"
+            type: boolean
+          - name: website
+            label: "Filter: Website"
+            type: boolean
+          - name: visitekaartjes
+            label: "Filter: Visitekaartjes"
+            type: boolean
+          - name: print
+            label: "Filter: Print"
+            type: boolean
+
+  - name: klanten
+    label: Klanten (logo's)
+    type: file
+    path: content/klanten.json
+    format: json
+    fields:
+      - name: klanten
+        label: Klanten
+        description: De logo's onder "Mijn klanten" op de Work-pagina. Gebruik bij voorkeur een PNG met transparante achtergrond.
+        type: object
+        list: true
+        fields:
+          - name: naam
+            label: Naam
+            type: string
+            required: true
+          - name: logo
+            label: Logo
+            type: image
+            options:
+              path: src/assets/uploads/klanten
+
+  - name: over-mij
+    label: "Over mij: foto's"
+    type: file
+    path: content/over-mij.json
+    format: json
+    fields:
+      - name: fotos
+        label: Portretfoto's
+        description: Deze foto's wisselen af in de boog op de About-pagina. Minstens 2 foto's voor het wisseleffect. Staande foto's (portret) werken het best.
+        type: object
+        list: true
+        fields:
+          - name: foto
+            label: Foto
+            type: image
+            required: true
+            options:
+              path: src/assets/uploads/over-mij
+          - name: focus
+            label: Waar staat je gezicht?
+            description: "Optioneel. Twee percentages: van links naar rechts, dan van boven naar onder. Bijvoorbeeld 50% 38% = in het midden, iets boven het midden. Leeg laten = 50% 38%."
+            type: string

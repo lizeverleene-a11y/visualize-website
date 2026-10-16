@@ -1,0 +1,9 @@
+{
+  "name": "visualize-site",
+  "private": true,
+  "description": "Website van VISUALIZE by LV",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": { "node": ">=18" }
+}

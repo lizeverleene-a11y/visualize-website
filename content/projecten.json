@@ -1,0 +1,114 @@
+{
+  "projecten": [
+    {
+      "naam": "Viventra Groepspraktijk Sint-Kruis",
+      "korte_naam": "Viventra",
+      "soort": "Huisstijl & branding · Website design",
+      "huisstijl": true,
+      "website": true,
+      "visitekaartjes": false,
+      "print": false,
+      "op_home": true,
+      "fotos": [
+        "/assets/uploads/projecten/viventra-1.jpg",
+        "/assets/uploads/projecten/viventra-2.jpg",
+        "/assets/uploads/projecten/viventra-3.jpg",
+        "/assets/uploads/projecten/viventra-4.jpg",
+        "/assets/uploads/projecten/viventra-5.jpg"
+      ],
+      "focus": "30% center"
+    },
+    {
+      "naam": "Soleil Vert",
+      "korte_naam": "",
+      "soort": "Website design · Rebranding",
+      "huisstijl": true,
+      "website": true,
+      "visitekaartjes": false,
+      "print": false,
+      "op_home": true,
+      "fotos": [
+        "/assets/uploads/projecten/soleil-vert-1.jpg",
+        "/assets/uploads/projecten/soleil-vert-2.jpg",
+        "/assets/uploads/projecten/soleil-vert-3.jpg"
+      ],
+      "focus": "center"
+    },
+    {
+      "naam": "Floating Astronauts",
+      "korte_naam": "",
+      "soort": "Grafisch design",
+      "huisstijl": false,
+      "website": false,
+      "visitekaartjes": false,
+      "print": true,
+      "op_home": false,
+      "fotos": [
+        "/assets/uploads/projecten/floating-astronauts-1.jpg",
+        "/assets/uploads/projecten/floating-astronauts-2.jpg"
+      ],
+      "focus": "center"
+    },
+    {
+      "naam": "Studio Pancake",
+      "korte_naam": "",
+      "soort": "Grafisch design",
+      "huisstijl": false,
+      "website": false,
+      "visitekaartjes": false,
+      "print": true,
+      "op_home": true,
+      "fotos": [
+        "/assets/uploads/projecten/studio-pancake-1.jpg",
+        "/assets/uploads/projecten/studio-pancake-2.jpg"
+      ],
+      "focus": "center"
+    },
+    {
+      "naam": "AJR",
+      "korte_naam": "",
+      "soort": "Visitekaartjes",
+      "huisstijl": false,
+      "website": false,
+      "visitekaartjes": true,
+      "print": false,
+      "op_home": true,
+      "fotos": [
+        "/assets/uploads/projecten/ajr-1.jpg"
+      ],
+      "focus": "center"
+    },
+    {
+      "naam": "La Bohème",
+      "korte_naam": "",
+      "soort": "Huisstijl & branding · Website design",
+      "huisstijl": true,
+      "website": true,
+      "visitekaartjes": false,
+      "print": false,
+      "op_home": false,
+      "fotos": [
+        "/assets/uploads/projecten/la-boheme-1.jpg",
+        "/assets/uploads/projecten/la-boheme-2.jpg",
+        "/assets/uploads/projecten/la-boheme-3.jpg",
+        "/assets/uploads/projecten/la-boheme-4.jpg"
+      ],
+      "focus": "center"
+    },
+    {
+      "naam": "Volley Bredene",
+      "korte_naam": "",
+      "soort": "Website design",
+      "huisstijl": false,
+      "website": true,
+      "visitekaartjes": false,
+      "print": false,
+      "op_home": false,
+      "fotos": [
+        "/assets/uploads/projecten/volley-bredene-1.jpg",
+        "/assets/uploads/projecten/volley-bredene-2.jpg"
+      ],
+      "focus": "center"
+    }
+  ]
+}

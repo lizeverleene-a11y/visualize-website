@@ -1,0 +1,24 @@
+{
+  "klanten": [
+    {
+      "naam": "AJR",
+      "logo": "/assets/uploads/klanten/ajr.png"
+    },
+    {
+      "naam": "Viventra",
+      "logo": "/assets/uploads/klanten/viventra.png"
+    },
+    {
+      "naam": "La Bohème",
+      "logo": "/assets/uploads/klanten/la-boheme.png"
+    },
+    {
+      "naam": "Volleybal Bredene",
+      "logo": "/assets/uploads/klanten/volley-bredene.png"
+    },
+    {
+      "naam": "Atelier d'O",
+      "logo": "/assets/uploads/klanten/atelier-do.png"
+    }
+  ]
+}

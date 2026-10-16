@@ -1,0 +1,12 @@
+/* Eigen lettertypes (woff2). Titels en tekst: Outfit. Het wisselende woord in de hero: Bungee en NanumPen.
+   font-display: block = nooit eerst een ander lettertype tonen. Ze zijn klein en
+   worden vooraf geladen, dus de wachttijd is verwaarloosbaar. */
+@font-face { font-family:'Bungee'; src:url('/assets/fonts/bungee-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:'NanumPen'; src:url('/assets/fonts/nanumpen-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:block; }
+/* Outfit staat nu op je eigen server in plaats van bij Google: sneller en zonder doorgifte aan Google */
+@font-face { font-family:'Outfit'; src:url('/assets/fonts/outfit-300.woff2') format('woff2'); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:'Outfit'; src:url('/assets/fonts/outfit-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Outfit'; src:url('/assets/fonts/outfit-500.woff2') format('woff2'); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:'Outfit'; src:url('/assets/fonts/outfit-600.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Outfit'; src:url('/assets/fonts/outfit-700.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Outfit'; src:url('/assets/fonts/outfit-800.woff2') format('woff2'); font-weight:800; font-style:normal; font-display:block; }

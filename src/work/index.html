@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl-BE" class="no-js">
+<head>
+{{head}}
+<title>Work — VISUALIZE by LV</title>
+<meta name="description" content="Geselecteerd werk van VISUALIZE by LV: huisstijlen, websites, visitekaartjes en drukwerk voor ondernemers.">
+<meta property="og:title" content="Work — VISUALIZE by LV">
+<meta property="og:description" content="Geselecteerd werk van VISUALIZE by LV: huisstijlen, websites, visitekaartjes en drukwerk voor ondernemers.">
+<link rel="stylesheet" href="/assets/css/work.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="page-work">
+{{header}}
+<h1 class="sr-only">Mijn werk</h1>
+<!-- FILTER -->
+<div class="work-filter">
+  <button class="filter-btn active" aria-pressed="true">Alles</button>
+  <button class="filter-btn" aria-pressed="false">Huisstijl</button>
+  <button class="filter-btn" aria-pressed="false">Website</button>
+  <button class="filter-btn" aria-pressed="false">Visitekaartjes</button>
+  <button class="filter-btn" aria-pressed="false">Print</button>
+</div>
+
+<!-- GRID -->
+<section class="work-grid-wrap">
+<div class="work-grid">
+
+{{projecten_work}}
+
+</div>
+</section>
+
+<!-- KLANTEN -->
+<section class="clients-section">
+  <h2 class="clients-title">MIJN <span class="outline-word">KLANTEN.</span></h2>
+  <div class="clients-title-line"></div>
+  <div class="clients-logos">
+{{klanten}}
+  </div>
+</section>
+<div class="marquee-wrap">
+  {{marquee}}
+</div>
+<!-- CTA -->
+
+<section class="work-cta">
+  <div class="cta-bg"></div>
+  <canvas id="cta-canvas"></canvas>
+  <div class="cta-inner">
+    <p class="cta-label">Klaar om te starten?</p>
+    <h2 class="cta-title">LATEN WE<br>SAMENWERKEN</h2>
+    <a href="/contact/" class="cta-btn">Neem contact op &nbsp;&#x2192;</a>
+  </div>
+</section>
+{{footer}}
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/work.js"></script>
+</body>
+</html>
